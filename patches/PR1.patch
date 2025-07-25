@@ -1,0 +1,13 @@
+diff --git a/apps/json_parse.c b/apps/json_parse.c
+index 31221d0..e59668e 100644
+--- a/apps/json_parse.c
++++ b/apps/json_parse.c
+@@ -52,7 +52,7 @@ static int showobj(struct json_object *new_obj);
+ 
+ static void showmem(void)
+ {
+-#ifdef HAVE_GETRUSAGE
++#if defined(HAVE_GETRUSAGE) && !defined(__MVS__)
+ 	struct rusage rusage;
+ 	memset(&rusage, 0, sizeof(rusage));
+ 	getrusage(RUSAGE_SELF, &rusage);
